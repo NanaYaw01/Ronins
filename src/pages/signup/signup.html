@@ -1,0 +1,87 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title> Create Account </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="userDetailsForm">
+	  <ion-list>
+
+      <ion-row>
+          <button (click)="doLogin()" ion-button clear style="text-transform: none;"><i> Already a member? Click to Login.</i></button>
+        </ion-row>
+
+      <ion-item item-start>
+        <h6 ion-text margin> Add Photo </h6>
+        <div class="border" margin padding>
+          <p>{{imageURL}}</p>
+          <ion-icon name="md-camera" (click)="AddPicture()" ></ion-icon>
+        </div>
+      </ion-item>
+
+  		<ion-item>
+      	<ion-label stacked style="text-align: right;"> Name </ion-label>
+      	<ion-input [formControl]="userDetailsForm.controls['name']" type="name"></ion-input>
+    	</ion-item>
+
+    	<ion-item>
+    		<ion-label stacked style="text-align: right;"> Password </ion-label>
+      	<ion-input [formControl]="userDetailsForm.controls['password']" type="password"></ion-input>
+    	</ion-item>
+
+      <div *ngIf="!userDetailsForm.controls.password.valid && userDetailsForm.controls.password.dirty" class="validator-error">
+        Your password should be minimum 8 characters.
+      </div>
+
+
+    	<ion-item>
+    		<ion-label stacked style="text-align: right;"> Confirm Password</ion-label>
+    		<ion-input [formControl]="userDetailsForm.controls['confirmPassword']" type="password"  ></ion-input>
+  		</ion-item>
+
+      <div *ngIf="userDetailsForm.controls.confirmPassword.error" class="validator-error">
+        Passwords do not match.
+      </div>
+    		
+    	<ion-item>
+    		<ion-label stacked style="text-align: right;"> Email </ion-label>
+    		<ion-input [formControl]="userDetailsForm.controls['email']" type="email"></ion-input>
+    	</ion-item>
+
+      <div *ngIf="!userDetailsForm.controls.email.valid && userDetailsForm.controls.email.dirty" class="validator-error">
+        Please enter a valid email.
+      </div>
+
+  		<ion-item>
+      	<ion-label stacked style="text-align: right;"> Mobile Number</ion-label>
+    		<ion-input [formControl]="userDetailsForm.controls['telephone']" type="number"></ion-input>
+  		</ion-item>
+
+      <div *ngIf="!userDetailsForm.controls.telephone.valid" class="validator-error">
+        Please enter a 10-digit number.
+      </div>
+
+  		<ion-item>
+    		<ion-label stacked style="text-align: right;"> Description </ion-label>
+    		<ion-input [formControl]="userDetailsForm.controls['description']" type="text"></ion-input>
+  		</ion-item>
+
+    	<ion-item>
+  			<ion-row>
+        	<button ion-button full block (click)="doSignup()" [disabled]="!userDetailsForm.valid" > Submit </button>
+      	</ion-row>
+    	</ion-item>
+
+  	</ion-list>
+  </form>
+</ion-content>

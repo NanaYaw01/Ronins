@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="credentialsForm">
+    <ion-list>
+
+      <ion-item>
+        <img src="http://placehold.it/300x100">
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked style="text-align: right;" >Email</ion-label>
+        <ion-input [formControl]="credentialsForm.controls['email']" type="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="!credentialsForm.controls.email.valid && credentialsForm.controls.email.dirty" class="validator-error">
+        Please enter a valid email.
+      </div>
+
+      <ion-item>
+        <ion-label stacked style="text-align: right;">Password</ion-label>
+        <ion-input [formControl]="credentialsForm.controls['password']" type="password"></ion-input>
+      </ion-item>
+
+      <div *ngIf="!credentialsForm.controls.password.valid && credentialsForm.controls.password.dirty" class="validator-error">
+        Your password should be minimum 8 characters.
+      </div>
+
+      <ion-item>
+        <ion-row>
+          <button ion-button full block [disabled]="!credentialsForm.valid" (click)="signin()"> Login </button>
+        </ion-row>
+        <ion-row>
+          <button (click)="signup()" ion-button clear style="text-transform: none;" > New to Ronins & Radar? Sign Up.</button>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
